@@ -1,0 +1,5 @@
+{
+    "require": {
+        "trburgess/tiny-crash-reporter": "dev-master"
+    }
+}
