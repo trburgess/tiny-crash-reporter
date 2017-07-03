@@ -2,6 +2,7 @@
 namespace TintCrashReporter\Tests;
 
 use Exception;
+use function TinyCrashReporter\formatMessage;
 use TinyCrashReporter\Handler;
 
 class HandlerTest extends \PHPUnit_Framework_TestCase
@@ -20,7 +21,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorHandler()
     {
-        $this->expectOutputString($this->formatMessage(E_WARNING, self::ERROR_MESSAGE));
+        $this->expectOutputString(formatMessage(E_WARNING, self::ERROR_MESSAGE));
         $this->handler->errorHandler(
             E_WARNING,
             self::ERROR_MESSAGE,
@@ -31,17 +32,13 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testExceptionHandler()
     {
-        $this->expectOutputString($this->formatMessage(Exception::class, self::ERROR_MESSAGE));
+        $this->expectOutputString(formatMessage(Exception::class, self::ERROR_MESSAGE));
         $this->handler->exceptionHandler(new Exception(self::ERROR_MESSAGE));
     }
 
-    /**
-     * @param $what
-     * @param $why
-     * @return string
-     */
-    protected function formatMessage($what, $why)
+    public function testExceptionHandlerWithNoMessage()
     {
-        return $what . ': ' . $why . PHP_EOL;
+        $this->expectOutputString(formatMessage(Exception::class));
+        $this->handler->exceptionHandler(new Exception());
     }
 }

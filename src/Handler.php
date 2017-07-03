@@ -28,7 +28,7 @@ class Handler
         $errorFile = '',
         $errorLine = 0
     ) {
-        print $this->formatMessage($errorNumber, $errorString);
+        print formatMessage($errorNumber, $errorString);
         // prevent default PHP error handler from processing error (based on requirements)
         return true;
     }
@@ -44,16 +44,6 @@ class Handler
      */
     public function exceptionHandler($exception)
     {
-        print $this->formatMessage(get_class($exception), $exception->getMessage());
-    }
-
-    /**
-     * @param $what
-     * @param $why
-     * @return string
-     */
-    protected function formatMessage($what, $why)
-    {
-        return $what . ': ' . $why . PHP_EOL;
+        print formatMessage(get_class($exception), $exception->getMessage());
     }
 }
