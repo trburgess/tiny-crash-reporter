@@ -21,7 +21,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorHandler()
     {
-        $this->expectOutputString(formatMessage(E_WARNING, self::ERROR_MESSAGE));
+        $this->expectOutputString(formatMessage('E_WARNING', self::ERROR_MESSAGE));
         $this->handler->errorHandler(
             E_WARNING,
             self::ERROR_MESSAGE,
