@@ -16,20 +16,24 @@ class Handler
     }
 
     /**
-     * @param $errorNumber
+     * @param $errorCode
      * @param $errorString
      * @param string $errorFile
      * @param int $errorLine
      * @return bool
      */
     public function errorHandler(
-        $errorNumber,
+        $errorCode,
         $errorString,
         $errorFile = '',
         $errorLine = 0
     ) {
+        if ($this->shouldIgnoreErrorCode($errorCode)) {
+            return false;
+        }
+
         print formatMessage(
-            $this->friendlyErrorType($errorNumber),
+            $this->friendlyErrorType($errorCode),
             $errorString
         );
 
@@ -91,5 +95,14 @@ class Handler
         }
 
         return 'Unknown Error';
+    }
+
+    /**
+     * @param $errorCode
+     * @return bool
+     */
+    protected function shouldIgnoreErrorCode($errorCode)
+    {
+        return !(error_reporting() & $errorCode);
     }
 }
