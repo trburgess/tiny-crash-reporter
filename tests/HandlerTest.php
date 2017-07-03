@@ -42,6 +42,6 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
      */
     protected function formatMessage($what, $why)
     {
-        return $what . ': ' . $why;
+        return $what . ': ' . $why . PHP_EOL;
     }
 }

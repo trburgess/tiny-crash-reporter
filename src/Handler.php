@@ -29,8 +29,8 @@ class Handler
         $errorLine = 0
     ) {
         print $this->formatMessage($errorNumber, $errorString);
-        // continue to be process by the default PHP error handler
-        return false;
+        // prevent default PHP error handler from processing error (based on requirements)
+        return true;
     }
 
     /**
@@ -54,6 +54,6 @@ class Handler
      */
     protected function formatMessage($what, $why)
     {
-        return $what . ': ' . $why;
+        return $what . ': ' . $why . PHP_EOL;
     }
 }
