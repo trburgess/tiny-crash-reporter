@@ -8,8 +8,8 @@ Tiny crash reporter is a PHP library to alert a user of an uncaught exception in
 
 ## Getting started
 
-1. `composer require "trburgess/tiny-crash-reporter"`
-2. Register the excpetion handler: `TinyCrashReporter\Handler::register();
+1. `composer require "trburgess/tiny-crash-reporter:dev-master"`
+2. Register the exception handler: `TinyCrashReporter\Handler::register();
 `
 3. Put the kettle on ;)!
 
