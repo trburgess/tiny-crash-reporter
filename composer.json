@@ -1,0 +1,33 @@
+{
+    "name": "trburgess/tiny-crash-reporter",
+    "type": "library",
+    "description": "Tiny crash reporter is a PHP library to alert a user of an uncaught exception in their code.",
+    "keywords": ["errors"],
+    "homepage": "https://github.com/trburgess/tiny-crash-reporter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Burgess",
+            "email": "tom.burgess@tburgess.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8|^5.0",
+        "php-mock/php-mock-phpunit": "^1.1"
+    },
+    "autoload": {
+        "psr-4" : {
+            "TinyCrashReporter\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4" : {
+            "TinyCrashReporter\\Tests\\" : "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
